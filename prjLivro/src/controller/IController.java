@@ -1,11 +1,12 @@
 package controller;
 
-import model.Acao;
+import java.util.ArrayList;
 
-public interface IController<T> {
+public interface IController <T>{
 
-	public void execute (Acao acao, String method) throws Exception ;
-	
-	public void execute(Acao acao) throws Exception;
-	
+	public void save(T t) throws Exception;
+	public void delete(T t) throws Exception;
+	public void update(T t) throws Exception;
+	public T find(T t) throws Exception;
+	public ArrayList<T> findAll() throws Exception;
 }
