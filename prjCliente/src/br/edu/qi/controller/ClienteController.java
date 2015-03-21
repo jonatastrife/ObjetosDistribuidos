@@ -37,7 +37,7 @@ public class ClienteController implements AbstractController<Cliente>{
 		case UPDATE:
 		case INSERT:
 			validation();
-			this.bo.save(this.dto);
+			bo.save(this.dto);
 			break;
 		case DELETE:
 			validation();
