@@ -6,9 +6,9 @@ import view.UILivro;
 public class Main {
 	
 	public static void main(String[] args) {
-		UILivro gui = new UILivro();
+		UILivro uiLivro = new UILivro();
 		try {
-			gui.execute();
+			uiLivro.execute();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
