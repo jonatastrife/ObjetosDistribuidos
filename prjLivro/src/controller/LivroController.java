@@ -2,8 +2,8 @@ package controller;
 
 import java.util.ArrayList;
 
+import repositorio.LivroRepositorio;
 import model.Livro;
-import model.LivroRepositorio;
 
 public class LivroController implements IController<Livro> {
 
