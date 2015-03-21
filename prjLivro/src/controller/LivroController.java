@@ -29,8 +29,8 @@ public class LivroController implements IController<Livro> {
 	}
 
 	@Override
-	public Livro find(Livro l) throws Exception {
-		return lr.find(l);
+	public Livro find(int i) throws Exception {
+		return lr.find(i);
 	}
 
 	@Override

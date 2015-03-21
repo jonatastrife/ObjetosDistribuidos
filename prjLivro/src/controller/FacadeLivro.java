@@ -28,8 +28,8 @@ public class FacadeLivro implements IFacade <Livro>{
 	}
 
 	@Override
-	public Livro find(Livro l) throws Exception {
-		return (Livro) lc.find(l);
+	public Livro find(int i) throws Exception {
+		return (Livro) lc.find(i);
 	}
 
 	@Override

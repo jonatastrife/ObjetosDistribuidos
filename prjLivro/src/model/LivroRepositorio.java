@@ -32,13 +32,8 @@ public class LivroRepositorio implements IRepositorio<Livro>{
 		}
 	}
 	@Override
-	public Livro find(Livro l) throws Exception {		
-		for (Livro l1: livros){
-			if (l1.getTitulo().equals(l.getTitulo())){
-				return (l1);
-			}
-		}
-		return null;
+	public Livro find(int i) throws Exception {		
+		return livros.get(i);
 	}
 	@Override
 	public ArrayList<Livro> findAll() throws Exception {
