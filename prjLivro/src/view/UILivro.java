@@ -38,9 +38,6 @@ public class UILivro {
 		livroClone.setTitulo("O mesmo livro de antes");
 		fl.update(livroClone);
 		fl.save(livroClone);
-		exibeLivros();
-		
-		
-			
+		exibeLivros();	
 	}
 }
