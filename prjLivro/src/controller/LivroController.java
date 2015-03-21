@@ -9,6 +9,10 @@ public class LivroController implements IController<Livro> {
 
 	private LivroRepositorio lr;
 	
+	public LivroController() {
+		lr = new LivroRepositorio();
+	}
+	
 	@Override
 	public void save(Livro l) throws Exception {
 		lr.save(l);		

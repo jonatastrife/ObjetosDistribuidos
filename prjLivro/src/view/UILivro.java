@@ -9,9 +9,7 @@ public class UILivro {
 	
 	public void execute() throws Exception {
 		
-		Livro livro = new Livro();		
-		
-		
+		Livro livro = new Livro("687","Sherlock Holmes","Um autor qualquer", "Editora qualquer", 1990);	
 		fl.save(livro);
 			
 	}

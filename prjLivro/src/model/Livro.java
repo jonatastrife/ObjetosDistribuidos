@@ -8,6 +8,24 @@ public class Livro {
 	private String editora;
 	private Integer anoObra;
 
+	public Livro(String isbn, String titulo, String autor, String editora,
+			Integer anoObra) {
+		super();
+		this.isbn = isbn;
+		this.titulo = titulo;
+		this.autor = autor;
+		this.editora = editora;
+		this.anoObra = anoObra;
+	}
+
+	
+	@Override
+	public String toString() {
+		return "Livro [isbn=" + isbn + ", titulo=" + titulo + ", autor="
+				+ autor + ", editora=" + editora + ", anoObra=" + anoObra + "]";
+	}
+
+
 	public String getIsbn() {
 		return isbn;
 	}

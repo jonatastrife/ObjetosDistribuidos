@@ -4,41 +4,44 @@ import java.util.ArrayList;
 
 public class LivroRepositorio implements IRepositorio<Livro>{
 
-	private ArrayList<Livro> livros = new ArrayList<Livro>();
+	private ArrayList<Livro> livros;
+	
+	public LivroRepositorio() {
+		livros = new ArrayList<Livro>();
+	}
 	
 	@Override
-	public void save(Livro T) throws Exception {
-		// TODO Auto-generated method stub
-		livros.add(T);
+	public void save(Livro l) throws Exception {
+		livros.add(l);
+		System.out.print("Salvou: "+l);
 	}
 	@Override
-	public void delete(Livro T) throws Exception {
-		for (Livro l: livros){
-			if (l.getTitulo().equals(((Livro) T).getTitulo())){
-				livros.remove(l);
+	public void delete(Livro l) throws Exception {
+		for (Livro l1: livros){
+			if (l1.getTitulo().equals(l.getTitulo())){
+				livros.remove(l1);
 			}
 		}		
 	}
 	@Override
-	public void update(Livro T) throws Exception {
-		for (Livro l: livros){
-			if (l.getTitulo().equals(((Livro) T).getTitulo())){
-				livros.set(livros.indexOf(l), (Livro) T);
+	public void update(Livro l) throws Exception {
+		for (Livro l1: livros){
+			if (l1.getTitulo().equals(l.getTitulo())){
+				livros.set(livros.indexOf(l1), l);
 			}
 		}
 	}
 	@Override
-	public Livro find(Livro T) throws Exception {		
-		for (Livro l: livros){
-			if (l.getTitulo().equals(((Livro) T).getTitulo())){
-				return (T);
+	public Livro find(Livro l) throws Exception {		
+		for (Livro l1: livros){
+			if (l1.getTitulo().equals(l.getTitulo())){
+				return (l1);
 			}
 		}
 		return null;
 	}
 	@Override
 	public ArrayList<Livro> findAll() throws Exception {
-		// TODO Auto-generated method stub
 		return livros;
 	}
 	
