@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+ <title>Calcula a média final</title>
+</h:head>
+ 
+ <h:body> 
+  <h:form>
+   
+   <h:outputLabel value="Informe a nota1: "/>
+   <h:inputText value="#{notaMB.nota1}" ></h:inputText>
+   <p></p>
+   <h:outputLabel value="Informe a nota2:"></h:outputLabel>
+   <h:inputText value="#{notaMB.nota2}"></h:inputText>
+   <p></p>
+   <h:commandButton action="#{notaMB.calcularMedia}" value="Calcular Média"/><br/>
+   <h:outputLabel value="A média ficou em: "/>
+   <h:outputText value="#{notaMB.media}"/>
+  </h:form> 
+ </h:body>
+ </html>
