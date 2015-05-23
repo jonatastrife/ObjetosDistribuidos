@@ -2,9 +2,8 @@
 .project
 .classpath
 .settings
+\.metadata
+
 
 #Maven
 \target
-
-#Glassfish
-\.metadata
