@@ -8,3 +8,6 @@
 
 #Glassfish
 \.metadata
+
+#Java
+.class
