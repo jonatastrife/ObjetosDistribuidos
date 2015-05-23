@@ -1,6 +1,7 @@
 package br.edu.qi.mb;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -9,6 +10,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import br.edu.qi.bean.AgendaBean;
+import br.edu.qi.model.Contato;
 
 
 @ManagedBean
@@ -21,7 +23,6 @@ public class AgendaMB implements Serializable{
 	AgendaBean bean;
 	
 	private List<Contato> contatos;
-	private int ;
 
 	public void carregarContatos() {
 	}
