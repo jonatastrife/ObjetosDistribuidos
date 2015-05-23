@@ -5,25 +5,35 @@
  xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
- <title>Cadastro de Laboratórios</title>
+ <title>Cadastro de Contatos</title>
 </h:head>
 
  <h:body> 
   <h:form>
-   <h:outputLabel value="Controle de Laboratório"/>
+   <h:outputLabel value="Cadastro de Contato"/>
    <hr/>
-   <h:outputLabel value="Cód. Turma: "/>
-   <h:inputText value="#{laboratorioMB.codTurma}" ></h:inputText>
-   <p></p>
-   <h:outputLabel value="Cód. disciplina: "/>
-   <h:inputText value="#{laboratorioMB.codDisciplina}" ></h:inputText>
-   <p></p>
-   <h:outputLabel value="Qtde máquinas: "/>
-   <h:inputText value="#{laboratorioMB.qtdeMaquinas}" ></h:inputText>
-   <p></p>
-   <h:commandButton action="#{laboratorioMB.save}" value="Gravar"/><br/>
+   <h:outputLabel value="Nome: "/>
+   <h:inputText value="#{contatoMB.nome}" ></h:inputText>
+   
+   <h:outputLabel value="Apelido: "/>   
+   <h:inputText value="#{contatoMB.apelido}" ></h:inputText>
+   
+   <h:outputLabel value="Telefone: "/>   
+   <h:inputText value="#{contatoMB.telephone}" ></h:inputText>
+   
+   <h:outputLabel value="Telefone: "/>   
+   <h:inputText value="#{contatoMB.celular}" ></h:inputText>
+   
+   <h:outputLabel value="E-mail: "/>   
+   <h:inputText value="#{contatoMB.email}" ></h:inputText>
+   
+   <h:outputLabel value="Data Nasc.: "/>   
+   <h:inputText value="#{contatoMB.dt_nasc}" ></h:inputText>
+   
+   <h:commandButton action="#{contatoMB.save}" value="Gravar"/><br/>
+   
    <h:messages id="msgErro" style="color:red"></h:messages>
-   <h:outputText value="#{laboratorioMB.msgAviso}"/>
+   <h:outputText value="#{contatoMB.msgAviso}"/>
   </h:form> 
  </h:body>
  </html>
