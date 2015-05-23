@@ -1,0 +1,36 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+ <title>Cadastro de Contatos</title>
+</h:head>
+
+ <h:body> 
+
+<h:dataTable value="#{userData.employees}" var="employee"
+   styleClass="employeeTable"
+   headerClass="employeeTableHeader"
+   rowClasses="employeeTableOddRow,employeeTableEvenRow">
+   <h:column>    				
+      <f:facet name="header">Name</f:facet>    				
+      #{employee.name}
+   </h:column>
+   <h:column>
+      <f:facet name="header">Department</f:facet>
+      #{employee.department}
+   </h:column>
+   <h:column>
+      <f:facet name="header">Age</f:facet>
+      #{employee.age}
+   </h:column>
+   <h:column>
+      <f:facet name="header">Salary</f:facet>
+      #{employee.salary}
+   </h:column>
+</h:dataTable>
+
+</h:body>
+ </html>
