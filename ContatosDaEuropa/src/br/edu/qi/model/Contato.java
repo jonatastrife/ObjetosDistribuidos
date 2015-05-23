@@ -6,6 +6,20 @@ public class Contato {
 
 	private String nome;
 	private String apelido;
+	public Contato(String nome, String apelido, String email, String telephone,
+			String celular, Date dt_nasc) {
+		super();
+		this.nome = nome;
+		this.apelido = apelido;
+		this.email = email;
+		this.telephone = telephone;
+		this.celular = celular;
+		this.dt_nasc = dt_nasc;
+	}
+
+	public Contato() {		
+	}
+
 	private String email;
 	private String telephone;
 	private String celular;

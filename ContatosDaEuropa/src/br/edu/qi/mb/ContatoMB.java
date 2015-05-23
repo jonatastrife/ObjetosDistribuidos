@@ -2,6 +2,8 @@ package br.edu.qi.mb;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 import javax.ejb.EJB;
@@ -14,7 +16,7 @@ import br.edu.qi.bean.ContatoBean;
 import br.edu.qi.model.Contato;
 
 
-@ManagedBean
+@ManagedBean(name="ContatoMB",eager=true)
 @ViewScoped
 public class ContatoMB implements Serializable{
 
@@ -22,6 +24,29 @@ public class ContatoMB implements Serializable{
 
 	@EJB
 	ContatoBean bean;
+	
+	
+	//------------ Aqui começa a gambi
+	private ArrayList<Contato> contatos;
+
+	public ArrayList<Contato> getContatos() throws Exception {
+		carregarContatos();
+		return contatos;
+	}
+
+	public void carregarContatos() throws Exception {
+		Contato a = new Contato("Pedro","Saco","Europa","asdasd","asdas", new Date());
+		Contato b = new Contato("Bixa","Arrombada","China","asdasd","asdas", new Date());
+				
+		contatos = new ArrayList<Contato>(Arrays.asList(a,b));
+		//contatos = bean.getContatos();
+	}
+	
+	public void addContato(Contato c){
+		
+	}
+	
+	//---------------------------------
 	
 	private String nome;
 	private String apelido;
