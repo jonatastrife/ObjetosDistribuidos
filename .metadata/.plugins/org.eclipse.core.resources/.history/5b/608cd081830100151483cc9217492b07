@@ -1,7 +1,0 @@
-package br.edu.qi.dao;
-
-import br.edu.qi.model.Contato;
-
-public class ContatoDao extends GenericDao implements IDAO<Contato>{
-
-}

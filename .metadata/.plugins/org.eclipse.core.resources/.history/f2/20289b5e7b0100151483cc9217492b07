@@ -1,4 +1,0 @@
-br.edu.qi.Driver=com.mysql.jdbc.Driver
-br.edu.qi.url=jdbc:mysql://localhost:3306/dbcontato
-br.edu.qi.user=root
-br.edu.qi.pwd=root
