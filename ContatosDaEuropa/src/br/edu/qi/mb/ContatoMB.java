@@ -58,6 +58,14 @@ public class ContatoMB implements Serializable{
 		}
 	}
 	
+	public void load() {
+		try {
+			bean.findAll();
+		} catch (Exception e) {
+			this.buildMessage("mensagemAlerta", e.getMessage());
+		}
+	}
+	
 	private void validation() throws Exception{
 		
 		if (this.getNome().trim().isEmpty()) {
