@@ -1,5 +1,8 @@
 package br.edu.qi.bean;
 
+import javax.ejb.Local;
+import javax.ejb.Stateless;
+
 import br.edu.qi.dao.ContatoDao;
 import br.edu.qi.model.Contato;
 
