@@ -1,7 +1,6 @@
 package br.edu.qi.bean;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
@@ -18,12 +17,7 @@ public class ContatoBean{
 		contatoDao.save(contato);
 	}
 	
-	public List<Contato> findAll() throws Exception {
+	public ArrayList<Contato> getContatos() throws Exception {		
 		return contatoDao.findAll();
-	}
-	
-	public ArrayList<Contato> getContatos() throws Exception
-	{		
-		return (ArrayList<Contato>) new ContatoDao().findAll();
 	}
 }

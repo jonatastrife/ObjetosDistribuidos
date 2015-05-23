@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import br.edu.qi.model.Contato;
 
@@ -36,10 +35,10 @@ public class ContatoDao extends GenericDao implements IDAO<Contato>{
 	}
 
 	@Override
-	public List<Contato> findAll() throws Exception {
+	public ArrayList<Contato> findAll() throws Exception {
 		PreparedStatement pstm = null;
 		
-		List<Contato> listaContatos = new ArrayList<Contato>();
+		ArrayList<Contato> listaContatos = new ArrayList<Contato>();
 		
 		try {
 			pstm = ConnectionManager.getInstance().getConnection().prepareStatement(FIND_ALL);
