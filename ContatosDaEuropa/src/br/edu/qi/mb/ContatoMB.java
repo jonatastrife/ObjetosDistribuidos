@@ -1,6 +1,8 @@
 package br.edu.qi.mb;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -9,6 +11,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import br.edu.qi.bean.ContatoBean;
+import br.edu.qi.model.Contato;
 
 
 @ManagedBean
@@ -35,7 +38,20 @@ public class ContatoMB implements Serializable{
 		try {
 			this.validation();
 			
+			Contato contato = new Contato();
+			contato.setNome(this.getNome());
+			contato.setApelido(this.getApelido());
+			contato.setEmail(this.getEmail());
+			contato.setTelephone(this.getTelephone());
+			contato.setCelular(this.getCelular());
 			
+			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");  
+			Date data = new Date(format.parse(this.getDt_nasc()).getTime());  
+			contato.setDt_nasc(data);
+			
+			this.buildMessage("mensagemAlerta", "Cadastrado com sucesso!");
+			
+			bean.save(contato);
 			
 		} catch (Exception e) {
 			this.buildMessage("mensagemAlerta", e.getMessage());
@@ -61,13 +77,6 @@ public class ContatoMB implements Serializable{
 		}
 		if (this.getDt_nasc().trim().isEmpty()) {
 			throw new Exception("Data de nascimento não deve ficar em branco!");
-		}
-		
-		if (!isNumeric(this.getTelephone().trim())) {
-			throw new Exception("Telefone deve ser numérico!");
-		}
-		if (!isNumeric(this.getCelular().trim())) {
-			throw new Exception("Celular deve ser numérico!");
 		}
 		
 	}
@@ -126,15 +135,6 @@ public class ContatoMB implements Serializable{
 
 	public void setMensagemAlerta(String mensagemAlerta) {
 		this.mensagemAlerta = mensagemAlerta;
-	}
-
-	private boolean isNumeric(String value) {
-		try {
-			Double.parseDouble(value);
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
 	}
 
 	private void buildMessage(String idElementoNaTela, String mensagem) {

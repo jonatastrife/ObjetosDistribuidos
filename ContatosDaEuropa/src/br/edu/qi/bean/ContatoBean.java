@@ -3,8 +3,8 @@ package br.edu.qi.bean;
 import br.edu.qi.dao.ContatoDao;
 import br.edu.qi.model.Contato;
 
-
-
+@Stateless
+@Local
 public class ContatoBean{
 
 	public void save(Contato contato) throws Exception {
