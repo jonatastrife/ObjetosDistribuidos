@@ -1,7 +1,10 @@
 package br.edu.qi.bean;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
+=======
 import java.util.List;
+>>>>>>> origin/master
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
@@ -22,10 +25,11 @@ public class ContatoBean{
 		return contatoDao.findAll();
 	}
 	
-
+<<<<<<< HEAD
 	public ArrayList<Contato> getContatos() throws Exception
 	{		
-		return (ArrayList<Contato>) new ContatoDao().findAll();
+		return new ContatoDao().findAll();
 	}
-
+=======
+>>>>>>> origin/master
 }
