@@ -1,0 +1,11 @@
+package br.edu.qi.app;
+
+public class Main {
+	// declarar objeto da view
+	try {
+		// chamar metodo de execute
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
