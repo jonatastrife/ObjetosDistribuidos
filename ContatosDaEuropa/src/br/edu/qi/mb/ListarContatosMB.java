@@ -4,10 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 
 import br.edu.qi.bean.ContatoBean;
 import br.edu.qi.model.Contato;
@@ -42,9 +40,9 @@ public class ListarContatosMB implements Serializable{
 		try {
 			bean.delete(contato);
 			contatos.remove(contato);
-			this.buildMessage("mensagemAlerta", "Contato excluido!");
+			MBUtils.buildMessage("mensagemAlerta", "Contato excluido!");
 		} catch (Exception e) {
-			this.buildMessage("mensagemAlerta", e.getMessage());
+			MBUtils.buildMessage("mensagemAlerta", e.getMessage());
 		}
 		return null;
 	}
@@ -60,19 +58,13 @@ public class ListarContatosMB implements Serializable{
 				try {
 					bean.update(contato);
 				} catch (Exception e) {
-					this.buildMessage("mensagemAlerta", e.getMessage());
+					MBUtils.buildMessage("mensagemAlerta", e.getMessage());
 				}
 				contato.setEditable(false);
 			}
 		}
 		contatos = null;
 		return null;
-	}
-	
-	private void buildMessage(String idElementoNaTela, String mensagem) {
-		FacesMessage facesMessage = new FacesMessage(mensagem);
-		FacesContext.getCurrentInstance().addMessage(idElementoNaTela,
-				facesMessage);
-	}
+	}	
 	
 }

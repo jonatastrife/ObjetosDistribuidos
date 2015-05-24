@@ -28,6 +28,16 @@ public class LoginMB implements Serializable {
 	private String password;
 
 	private String mensagemAlerta;
+	private String usuarioValido;
+
+	public String getUsuarioValido() throws Exception {
+		this.validaLogin();
+		return null;
+	}
+
+	public void setUsuarioValido(String usuarioValido) {
+		this.usuarioValido = usuarioValido;
+	}
 
 	public void executeLogin() {
 		this.setMensagemAlerta("");
@@ -45,6 +55,12 @@ public class LoginMB implements Serializable {
 			}
 		} catch (Exception e) {
 			MBUtils.buildMessage("mensagemAlerta", e.getMessage());
+		}
+	}
+	
+	public void validaLogin() throws Exception{
+		if (bean.getUsuarioLogado() == null) {
+			MBUtils.redirecionarPara(URL + LOGIN);
 		}
 	}
 
@@ -73,7 +89,7 @@ public class LoginMB implements Serializable {
 		this.mensagemAlerta = mensagemAlerta;
 	}
 
-	public String getUsername() {
+	public String getUsername() throws Exception {		
 		return username;
 	}
 
