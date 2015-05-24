@@ -14,6 +14,8 @@ import br.edu.qi.model.Login;
 public class LoginMB implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	private final String URL_CONTATOS = "http://localhost:8080/ContatosDaEuropa/view/contatos.xhtml";
 
 	@EJB
 	LoginBean bean;
@@ -34,6 +36,8 @@ public class LoginMB implements Serializable {
 			login.setSenha(this.getPassword());
 			if (bean.verificaLogin(login)) {
 				// SUCESSO!!!!
+				MBUtils.buildMessage("mensagemAlerta", "Usuário encontrado!");
+				MBUtils.getContexto().redirect(URL_CONTATOS);
 			} else {
 				MBUtils.buildMessage("mensagemAlerta", "Usuário não encontrado!");
 			}
