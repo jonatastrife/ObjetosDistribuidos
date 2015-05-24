@@ -45,25 +45,12 @@
 			<f:facet name="header">Telefone</f:facet>#{contato.telephone}
    </h:column>	
    
-   
-<!--    <h:column> -->
-<!--       <f:facet name="header">Delete</f:facet> -->
-<!--          <h:commandButton value="Delete"  -->
-<!--             action="#{userData.deleteEmployee}"  />                 -->
-<!--             <f:setPropertyActionListener  -->
-<!--                target="#{userData.employee}" value="#{employee}" /> -->
-<!--          </h:commandButton> -->
-<!--    </h:column> -->
-   
-   
-   
-<!-- 	<h:column> -->
-<!-- 		<f:facet name="header">Deleta</f:facet> -->
-<!-- 		<h:commandButton value="Excluir" action="#{ContatoMB.deleteContato}" /> -->
-<!-- 		<f:setPropertyActionListener target="#{ContatoMB.contato}" -->
-<!-- 			value="#{contato}" /> -->
-<!-- 		</h:commandButton> -->
-<!-- 	</h:column> -->
+	<h:column>
+		<f:facet name="header">Deleta</f:facet>		
+		<h:commandButton action="#{ContatoMB.deleteContato}" value="Excluir" /> 
+     		<f:setPropertyActionListener target="#{ContatoMB.contato}" value="#{contato}" />
+     	</h:commandButton>				
+	</h:column>
 
 	</h:dataTable>
 

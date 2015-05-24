@@ -35,7 +35,7 @@ public class ContatoMB implements Serializable{
 	
 	private String mensagemAlerta;
 
-	public void save() {
+	public String save() {
 		this.setMensagemAlerta("");
 		
 		try {
@@ -60,10 +60,12 @@ public class ContatoMB implements Serializable{
 		} catch (Exception e) {
 			this.buildMessage("mensagemAlerta", e.getMessage());
 		}
+		return null;
 	}
 	
-	public String deleteContato(Contato c){
+	public String deleteContato(Contato c) throws Exception{
 		contatos.remove(c);
+		bean.delete(c);
 		return null;
 	}
 	
@@ -71,7 +73,7 @@ public class ContatoMB implements Serializable{
 		contatos = bean.getContatos();
 		return contatos;
 	}
-
+	
 	private void validation() throws Exception{
 		
 		if (this.getNome().trim().isEmpty()) {

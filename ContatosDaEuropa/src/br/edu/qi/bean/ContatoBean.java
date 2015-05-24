@@ -20,4 +20,9 @@ public class ContatoBean{
 	public ArrayList<Contato> getContatos() throws Exception {		
 		return contatoDao.findAll();
 	}
+
+	public void delete(Contato c) throws Exception {
+		// TODO Auto-generated method stub
+		contatoDao.delete(c);
+	}
 }
