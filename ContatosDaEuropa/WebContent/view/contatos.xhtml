@@ -1,52 +1,71 @@
- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
- xmlns:h="http://java.sun.com/jsf/html"
- xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<title>Lista de Contatos</title>
-<style>	
-	.contatoTable{   
-   border-collapse:collapse;
-   border:1px solid #000000;
+	<style>
+.contatoTable {
+	border-collapse: collapse;
+	border: 1px solid #000000;
 }
 
-.contatoTableHeader{
-   text-align:center;
-   background:none repeat scroll 0 0 #B5B5B5;
-   border-bottom:1px solid #000000;  
-   padding:2px;
+.contatoTableHeader {
+	text-align: center;
+	background: none repeat scroll 0 0 #B5B5B5;
+	border-bottom: 1px solid #000000;
+	padding: 2px;
 }
 
-.contatoTableOddRow{
-   text-align:center;
-   background:none repeat scroll 0 0 #FFFFFFF;	
+.contatoTableOddRow {
+	text-align: center;
+	background: none repeat scroll 0 0 #FFFFFFF;
 }
 
-.contatoTableEvenRow{
-   text-align:center;
-   background:none repeat scroll 0 0 #D3D3D3;
-}</style>
+.contatoTableEvenRow {
+	text-align: center;
+	background: none repeat scroll 0 0 #D3D3D3;
+}
+</style>
 </h:head>
- <h:body>
-<h:dataTable value="#{ContatoMB.contatos}" var="contato"
-   styleClass="contatoTable"
-   headerClass="contatoTableHeader"
-   rowClasses="contatoTableOddRow,contatoTableEvenRow">
-   <h:column>    				
-      <f:facet name="header">Nome</f:facet>    				
-      #{contato.nome}
+<h:body>
+	<h:dataTable value="#{ContatoMB.contatos}" var="contato"
+		styleClass="contatoTable" headerClass="contatoTableHeader"
+		rowClasses="contatoTableOddRow,contatoTableEvenRow">
+	<h:column>
+			<f:facet name="header">Nome</f:facet>#{contato.nome}
    </h:column>
-   <h:column>
-      <f:facet name="header">Apelido</f:facet>
-      #{contato.apelido}
+	<h:column>
+			<f:facet name="header">Apelido</f:facet>#{contato.apelido}
    </h:column>
-   <h:column>
-      <f:facet name="header">Telefone</f:facet>
-      #{contato.telephone}
-   </h:column>
-</h:dataTable>
+  <h:column>
+			<f:facet name="header">Telefone</f:facet>#{contato.telephone}
+   </h:column>	
+   
+   
+<!--    <h:column> -->
+<!--       <f:facet name="header">Delete</f:facet> -->
+<!--          <h:commandButton value="Delete"  -->
+<!--             action="#{userData.deleteEmployee}"  />                 -->
+<!--             <f:setPropertyActionListener  -->
+<!--                target="#{userData.employee}" value="#{employee}" /> -->
+<!--          </h:commandButton> -->
+<!--    </h:column> -->
+   
+   
+   
+<!-- 	<h:column> -->
+<!-- 		<f:facet name="header">Deleta</f:facet> -->
+<!-- 		<h:commandButton value="Excluir" action="#{ContatoMB.deleteContato}" /> -->
+<!-- 		<f:setPropertyActionListener target="#{ContatoMB.contato}" -->
+<!-- 			value="#{contato}" /> -->
+<!-- 		</h:commandButton> -->
+<!-- 	</h:column> -->
+
+	</h:dataTable>
 
 </h:body>
- </html>
+</html>

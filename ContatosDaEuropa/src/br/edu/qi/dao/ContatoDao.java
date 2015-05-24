@@ -9,11 +9,11 @@ import br.edu.qi.model.Contato;
 
 public class ContatoDao extends GenericDao implements IDAO<Contato>{
 
-	private static final String INSERT = "INSERT INTO Contato VALUES(?, ?, ?, ?, ?, ?)";
-	private static final String DELETE = "DELETE FROM Contato WHERE nome like '?'";
+	private static final String INSERT = "INSERT INTO Contatos VALUES(?, ?, ?, ?, ?, ?)";
+	private static final String DELETE = "DELETE FROM Contatos WHERE nome like '?'";
 	private static final String FIND_ALL = "SELECT * FROM Contato";
 	private static final String UPDATE = 
-			" UPDATE Contato" +
+			" UPDATE Contatos" +
 			" SET apelido = ?, email = ?, celular = ?, telephone = ?, celular = ?, dt_nasc = ? " +
 			" WHERE nome = '?' ";
 	

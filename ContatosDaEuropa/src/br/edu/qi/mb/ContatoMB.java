@@ -55,10 +55,16 @@ public class ContatoMB implements Serializable{
 			this.buildMessage("mensagemAlerta", "Cadastrado com sucesso!");
 			
 			bean.save(contato);
+			contatos.add(contato);
 			
 		} catch (Exception e) {
 			this.buildMessage("mensagemAlerta", e.getMessage());
 		}
+	}
+	
+	public String deleteContato(Contato c){
+		contatos.remove(c);
+		return null;
 	}
 	
 	public ArrayList<Contato> getContatos() throws Exception {
