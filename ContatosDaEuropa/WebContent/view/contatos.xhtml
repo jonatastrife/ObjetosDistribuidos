@@ -76,11 +76,9 @@
 		    	</f:facet>  
 		    	<h:commandLink value="Excluir" action="#{listaContato.deleteContato(contato)}" 
 		    		rendered="#{not contato.editable}"/>  
-		    </h:column>  
-
+		    </h:column> 
 		</h:dataTable>
-
+		<h:commandButton value="Incluir" action="cadContato.xhtml" />
 	</h:form>
-
 </h:body>
 </html>
