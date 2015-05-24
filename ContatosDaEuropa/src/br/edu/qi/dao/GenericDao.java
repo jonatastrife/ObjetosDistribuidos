@@ -9,7 +9,11 @@ public abstract class GenericDao {
 		try {
 			pstm = ConnectionManager.getInstance().getConnection().prepareStatement(sql);
 			for (int i = 0; i < parameters.length; i++) {
-				pstm.setObject(i+1, parameters[i]);
+				if (parameters.length == 0) {
+					pstm.setObject(i, parameters[i]);
+				} else {
+					pstm.setObject(i+1, parameters[i]);
+				}
 			}
 			return pstm.executeUpdate();
 		} catch (Exception e) {

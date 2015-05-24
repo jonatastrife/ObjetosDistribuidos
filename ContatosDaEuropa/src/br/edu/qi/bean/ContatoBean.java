@@ -17,12 +17,15 @@ public class ContatoBean{
 		contatoDao.save(contato);
 	}
 	
+	public void update(Contato contato) throws Exception {
+		contatoDao.update(contato);
+	}
+	
 	public ArrayList<Contato> getContatos() throws Exception {		
 		return contatoDao.findAll();
 	}
 
 	public void delete(Contato c) throws Exception {
-		// TODO Auto-generated method stub
 		contatoDao.delete(c);
 	}
 }

@@ -24,8 +24,6 @@ public class ContatoMB implements Serializable{
 	@EJB
 	ContatoBean bean;
 	
-	private ArrayList<Contato> contatos;
-
 	private String nome;
 	private String apelido;
 	private String email;
@@ -55,23 +53,11 @@ public class ContatoMB implements Serializable{
 			this.buildMessage("mensagemAlerta", "Cadastrado com sucesso!");
 			
 			bean.save(contato);
-			contatos.add(contato);
 			
 		} catch (Exception e) {
 			this.buildMessage("mensagemAlerta", e.getMessage());
 		}
 		return null;
-	}
-	
-	public String deleteContato(Contato c) throws Exception{
-		contatos.remove(c);
-		bean.delete(c);
-		return null;
-	}
-	
-	public ArrayList<Contato> getContatos() throws Exception {
-		contatos = bean.getContatos();
-		return contatos;
 	}
 	
 	private void validation() throws Exception{
@@ -152,7 +138,7 @@ public class ContatoMB implements Serializable{
 	public void setMensagemAlerta(String mensagemAlerta) {
 		this.mensagemAlerta = mensagemAlerta;
 	}
-
+	
 	private void buildMessage(String idElementoNaTela, String mensagem) {
 		FacesMessage facesMessage = new FacesMessage(mensagem);
 		FacesContext.getCurrentInstance().addMessage(idElementoNaTela,

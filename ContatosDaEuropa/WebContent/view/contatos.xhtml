@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -7,7 +6,9 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<title>Lista de Contatos</title>
-	<style>
+	
+<style>
+
 .contatoTable {
 	border-collapse: collapse;
 	border: 1px solid #000000;
@@ -30,29 +31,54 @@
 	background: none repeat scroll 0 0 #D3D3D3;
 }
 </style>
+
 </h:head>
 <h:body>
-	<h:dataTable value="#{ContatoMB.contatos}" var="contato"
-		styleClass="contatoTable" headerClass="contatoTableHeader"
-		rowClasses="contatoTableOddRow,contatoTableEvenRow">
-	<h:column>
-			<f:facet name="header">Nome</f:facet>#{contato.nome}
-   </h:column>
-	<h:column>
-			<f:facet name="header">Apelido</f:facet>#{contato.apelido}
-   </h:column>
-  <h:column>
-			<f:facet name="header">Telefone</f:facet>#{contato.telephone}
-   </h:column>	
-   
-	<h:column>
-		<f:facet name="header">Deleta</f:facet>		
-		<h:commandButton action="#{ContatoMB.deleteContato}" value="Excluir" /> 
-     		<f:setPropertyActionListener target="#{ContatoMB.contato}" value="#{contato}" />
-     	</h:commandButton>				
-	</h:column>
+	
+	<h:form>
+		<h:messages id="msgAlerta" style="color:red"></h:messages>
+		<h:outputText value="#{ContatoMB.mensagemAlerta}"/>
+		
+		<h:dataTable value="#{listaContato.contatos}" var="contato"
+			styleClass="contatoTable" headerClass="contatoTableHeader"
+			rowClasses="contatoTableOddRow,contatoTableEvenRow">
+			
+			<h:column>
+				<f:facet name="header">Nome</f:facet>
+				<h:inputText value="#{contato.nome}" rendered="#{contato.editable}" />
+				<h:outputText value="#{contato.nome}" rendered="#{not contato.editable}" />
+		    </h:column>
+			<h:column>
+				<f:facet name="header">Apelido</f:facet>
+				<h:inputText value="#{contato.apelido}" rendered="#{contato.editable}" />
+				<h:outputText value="#{contato.apelido}" rendered="#{not contato.editable}" />
+		    </h:column>
+		    <h:column>
+				<f:facet name="header">Telefone</f:facet>#{contato.telephone}
+				<h:inputText value="#{contato.telephone}" rendered="#{contato.editable}" />
+				<h:outputText value="#{contato.telephone}" rendered="#{not contato.editable}" />
+		    </h:column>	
+		   
+		   	<h:column>  
+		    	<f:facet name="header">
+		    		<h:outputText value="Atualizar" />
+		    	</f:facet>  
+				<h:commandLink value="Atualizar" action="#{listaContato.atualizarContato(contato)}"
+				 	rendered="#{not contato.editable}" />
+		    </h:column>  
 
-	</h:dataTable>
+			<h:column>  
+		    	<f:facet name="header">
+		    		<h:outputText value="Excluir" />
+		    	</f:facet>  
+		    	<h:commandLink value="Excluir" action="#{listaContato.deleteContato(contato)}" />  
+		    </h:column>  
+
+		</h:dataTable>
+
+		<h:commandButton value="Salvar Alterações" action="#{listaContato.salvarAlteracoes}" />
+
+	</h:form>
 
 </h:body>
 </html>

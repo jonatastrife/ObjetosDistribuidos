@@ -6,9 +6,16 @@ public class Contato {
 
 	private String nome;
 	private String apelido;
+
+	private String email;
+	private String telephone;
+	private String celular;
+	private Date dt_nasc;
+
+	boolean editable;
+
 	public Contato(String nome, String apelido, String email, String telephone,
 			String celular, Date dt_nasc) {
-		super();
 		this.nome = nome;
 		this.apelido = apelido;
 		this.email = email;
@@ -17,13 +24,8 @@ public class Contato {
 		this.dt_nasc = dt_nasc;
 	}
 
-	public Contato() {		
+	public Contato() {
 	}
-
-	private String email;
-	private String telephone;
-	private String celular;
-	private Date dt_nasc;
 
 	public String getNome() {
 		return nome;
@@ -71,6 +73,14 @@ public class Contato {
 
 	public void setDt_nasc(Date dt_nasc) {
 		this.dt_nasc = dt_nasc;
+	}
+
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
 	}
 
 }
