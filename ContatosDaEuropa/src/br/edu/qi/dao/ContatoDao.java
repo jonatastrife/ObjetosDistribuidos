@@ -10,12 +10,12 @@ import br.edu.qi.model.Contato;
 public class ContatoDao extends GenericDao implements IDAO<Contato>{
 
 	private static final String INSERT = "INSERT INTO Contatos VALUES(?, ?, ?, ?, ?, ?)";
-	private static final String DELETE = "DELETE FROM Contatos WHERE nome = '?'";
+	private static final String DELETE = "DELETE FROM Contatos WHERE nome = ?";
 	private static final String FIND_ALL = "SELECT * FROM Contatos";
 	private static final String UPDATE = 
 			" UPDATE Contatos" +
 			" SET apelido = ?, telephone = ?, celular = ?, email = ?, dt_nasc = ? " +
-			" WHERE nome = '?' ";
+			" WHERE nome = ? ";
 	
 	
 	@Override
