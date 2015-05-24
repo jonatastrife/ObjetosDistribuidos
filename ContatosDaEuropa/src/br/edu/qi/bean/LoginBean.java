@@ -18,15 +18,17 @@ public class LoginBean {
 		//Aqui testa se o usuário existe no banco ou não
 		if (loginDao.verificaLogin(login) || true) {			
 			//Se existe adiciona na sessão o login e senha
-			MBUtils.setAttribute("login",login.getCd_usuario());
-			MBUtils.setAttribute("senha",login.getSenha());
+			MBUtils.setAttribute("Login", login);
 			
-			return MBUtils.getAttribute("login").equals("jonata");
-			//return true;
+			return true;
 		}else {
 			return false;
 		}
 		
+	}
+	
+	public Login getUsuarioLogado(){
+		return (Login) MBUtils.getAttribute("Login");
 	}
 	
 }

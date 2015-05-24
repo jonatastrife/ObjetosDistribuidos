@@ -38,7 +38,8 @@
 	<h:form>
 		<h:messages id="msgAlerta" style="color:red"></h:messages>
 		<h:outputText value="#{ContatoMB.mensagemAlerta}"/>
-		
+		<h:outputText value="Seja bem vindo a sua lista de contatos #{loginBean.username}"/>
+		<h:commandButton action="#{loginBean.deslogarUsuario}" value="Logout"/><br/>
 		<h:dataTable value="#{listaContato.contatos}" var="contato"
 			styleClass="contatoTable" headerClass="contatoTableHeader"
 			rowClasses="contatoTableOddRow,contatoTableEvenRow">

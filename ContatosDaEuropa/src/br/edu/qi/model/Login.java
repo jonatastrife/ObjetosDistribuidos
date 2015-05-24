@@ -5,9 +5,16 @@ public class Login {
 	private String cd_usuario;
 	private String senha;
 
+	public Login(String cd_usuario, String senha) {
+		super();
+		this.cd_usuario = cd_usuario;
+		this.senha = senha;
+	}
+	
 	public String getCd_usuario() {
 		return cd_usuario;
 	}
+
 
 	public void setCd_usuario(String cd_usuario) {
 		this.cd_usuario = cd_usuario;

@@ -1,10 +1,12 @@
 package br.edu.qi.mb;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.swing.plaf.multi.MultiButtonUI;
 
 import br.edu.qi.bean.LoginBean;
 import br.edu.qi.model.Login;
@@ -14,8 +16,9 @@ import br.edu.qi.model.Login;
 public class LoginMB implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private final String URL_CONTATOS = "http://localhost:8080/ContatosDaEuropa/view/contatos.xhtml";
+	private final String URL_LOGIN = "http://localhost:8080/ContatosDaEuropa/view/login.xhtml";
 
 	@EJB
 	LoginBean bean;
@@ -27,26 +30,28 @@ public class LoginMB implements Serializable {
 
 	public void executeLogin() {
 		this.setMensagemAlerta("");
-		
+
 		try {
 			this.validation();
-			
-			Login login = new Login();
-			login.setCd_usuario(this.getUsername());
-			login.setSenha(this.getPassword());
+
+			Login login = new Login(this.getUsername(), this.getPassword());
+
 			if (bean.verificaLogin(login)) {
-				// SUCESSO!!!!
-				MBUtils.buildMessage("mensagemAlerta", "Usuário encontrado!");
-				MBUtils.getContexto().redirect(URL_CONTATOS);
+				MBUtils.redirecionarPara(URL_CONTATOS);
 			} else {
-				MBUtils.buildMessage("mensagemAlerta", "Usuário não encontrado!");
+				MBUtils.buildMessage("mensagemAlerta",
+						"Usuário não encontrado!");
 			}
 		} catch (Exception e) {
 			MBUtils.buildMessage("mensagemAlerta", e.getMessage());
 		}
-		
 	}
-	
+
+	public void deslogarUsuario() throws IOException {
+		MBUtils.encerrarSessao();
+		MBUtils.redirecionarPara(URL_LOGIN);
+	}
+
 	private void validation() throws Exception {
 		if (this.getUsername().trim().isEmpty()) {
 			throw new Exception("Username não deve ficar em branco!");
@@ -54,8 +59,10 @@ public class LoginMB implements Serializable {
 		if (this.getPassword().trim().isEmpty()) {
 			throw new Exception("Password não deve ficar em branco!");
 		}
-		
+
 	}
+
+	// Métodos para tela
 
 	public String getMensagemAlerta() {
 		return mensagemAlerta;
@@ -64,7 +71,7 @@ public class LoginMB implements Serializable {
 	public void setMensagemAlerta(String mensagemAlerta) {
 		this.mensagemAlerta = mensagemAlerta;
 	}
-	
+
 	public String getUsername() {
 		return username;
 	}
@@ -81,6 +88,4 @@ public class LoginMB implements Serializable {
 		this.password = password;
 	}
 
-	
-	
 }
