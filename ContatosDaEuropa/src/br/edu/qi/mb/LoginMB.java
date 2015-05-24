@@ -9,7 +9,7 @@ import javax.faces.bean.ViewScoped;
 import br.edu.qi.bean.LoginBean;
 import br.edu.qi.model.Login;
 
-@ManagedBean
+@ManagedBean(name="loginMB",eager=true)
 @ViewScoped
 public class LoginMB implements Serializable {
 
