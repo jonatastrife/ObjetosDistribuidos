@@ -17,8 +17,9 @@ public class LoginMB implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private final String URL_CONTATOS = "http://localhost:8080/ContatosDaEuropa/view/contatos.xhtml";
-	private final String URL_LOGIN = "http://localhost:8080/ContatosDaEuropa/view/login.xhtml";
+	private final String URL = "http://localhost:8080/ContatosDaEuropa/view/";
+	private final String CONTATOS = "contatos.xhtml";
+	private final String LOGIN = "login.xhtml";
 
 	@EJB
 	LoginBean bean;
@@ -37,7 +38,7 @@ public class LoginMB implements Serializable {
 			Login login = new Login(this.getUsername(), this.getPassword());
 
 			if (bean.verificaLogin(login)) {
-				MBUtils.redirecionarPara(URL_CONTATOS);
+				MBUtils.redirecionarPara(URL + CONTATOS);
 			} else {
 				MBUtils.buildMessage("mensagemAlerta",
 						"Usuário não encontrado!");
@@ -49,7 +50,7 @@ public class LoginMB implements Serializable {
 
 	public void deslogarUsuario() throws IOException {
 		MBUtils.encerrarSessao();
-		MBUtils.redirecionarPara(URL_LOGIN);
+		MBUtils.redirecionarPara(URL + LOGIN);
 	}
 
 	private void validation() throws Exception {
