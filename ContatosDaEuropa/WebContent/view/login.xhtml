@@ -13,15 +13,15 @@
    <h:outputLabel value="Login"/>
    <hr/>
    <h:outputLabel value="Nome: "/>
-   <h:inputText value="#{LoginMB.username}" ></h:inputText>
+   <h:inputText value="#{loginBean.username}" ></h:inputText>
    <p></p>
    <h:outputLabel value="Apelido: "/>   
-   <h:inputText value="#{LoginMB.password}" ></h:inputText>
+   <h:inputText value="#{loginBean.password}" ></h:inputText>
    <p></p>
-   <h:commandButton action="#{LoginMB.executeLogin}" value="Login"/><br/>
+   <h:commandButton action="#{loginBean.executeLogin}" value="Login"/><br/>
    
    <h:messages id="msgAlerta" style="color:red"></h:messages>
-   <h:outputText value="#{ContatoMB.mensagemAlerta}"/>
+   <h:outputText value="#{loginBean.mensagemAlerta}"/>
   </h:form> 
  </h:body>
  </html>

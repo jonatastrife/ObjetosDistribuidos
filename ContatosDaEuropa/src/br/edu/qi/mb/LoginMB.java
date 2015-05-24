@@ -4,13 +4,13 @@ import java.io.Serializable;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 
 import br.edu.qi.bean.LoginBean;
 import br.edu.qi.model.Login;
 
-@ManagedBean
-@ViewScoped
+@ManagedBean(name = "loginBean")
+@SessionScoped
 public class LoginMB implements Serializable {
 
 	private static final long serialVersionUID = 1L;
