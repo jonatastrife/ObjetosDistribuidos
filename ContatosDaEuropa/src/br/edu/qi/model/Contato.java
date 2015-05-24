@@ -12,7 +12,7 @@ public class Contato {
 	private String celular;
 	private Date dt_nasc;
 
-	boolean editable;
+	private boolean editable;
 
 	public Contato(String nome, String apelido, String email, String telephone,
 			String celular, Date dt_nasc) {
@@ -78,7 +78,7 @@ public class Contato {
 	public boolean isEditable() {
 		return editable;
 	}
-
+	
 	public void setEditable(boolean editable) {
 		this.editable = editable;
 	}

@@ -24,10 +24,12 @@ public class ListarContatosMB implements Serializable{
 	private ArrayList<Contato> contatos;
 
 	public ArrayList<Contato> getContatos() {
-		try {
-			contatos = bean.getContatos();
-		} catch (Exception e) {
-			contatos = new ArrayList<Contato>();
+		if (contatos == null) {
+			try {
+				contatos = bean.getContatos();
+			} catch (Exception e) {
+				contatos = new ArrayList<Contato>();
+			}
 		}
 		return contatos;
 	}
@@ -63,6 +65,7 @@ public class ListarContatosMB implements Serializable{
 				contato.setEditable(false);
 			}
 		}
+		contatos = null;
 		return null;
 	}
 	

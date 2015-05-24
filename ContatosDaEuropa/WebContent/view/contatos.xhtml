@@ -54,7 +54,7 @@
 				<h:outputText value="#{contato.apelido}" rendered="#{not contato.editable}" />
 		    </h:column>
 		    <h:column>
-				<f:facet name="header">Telefone</f:facet>#{contato.telephone}
+				<f:facet name="header">Telefone</f:facet>
 				<h:inputText value="#{contato.telephone}" rendered="#{contato.editable}" />
 				<h:outputText value="#{contato.telephone}" rendered="#{not contato.editable}" />
 		    </h:column>	
@@ -65,18 +65,19 @@
 		    	</f:facet>  
 				<h:commandLink value="Atualizar" action="#{listaContato.atualizarContato(contato)}"
 				 	rendered="#{not contato.editable}" />
+				<h:commandLink value="Salvar Alterações" immediate="true" 
+					action="#{listaContato.salvarAlteracoes}" rendered="#{contato.editable}" />
 		    </h:column>  
 
 			<h:column>  
 		    	<f:facet name="header">
 		    		<h:outputText value="Excluir" />
 		    	</f:facet>  
-		    	<h:commandLink value="Excluir" action="#{listaContato.deleteContato(contato)}" />  
+		    	<h:commandLink value="Excluir" action="#{listaContato.deleteContato(contato)}" 
+		    		rendered="#{not contato.editable}"/>  
 		    </h:column>  
 
 		</h:dataTable>
-
-		<h:commandButton value="Salvar Alterações" action="#{listaContato.salvarAlteracoes}" />
 
 	</h:form>
 
