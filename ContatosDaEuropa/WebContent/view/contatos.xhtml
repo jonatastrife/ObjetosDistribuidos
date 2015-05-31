@@ -3,35 +3,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<title>Lista de Contatos</title>
-	
-<style>
-
-.contatoTable {
-	border-collapse: collapse;
-	border: 1px solid #000000;
-}
-
-.contatoTableHeader {
-	text-align: center;
-	background: none repeat scroll 0 0 #B5B5B5;
-	border-bottom: 1px solid #000000;
-	padding: 2px;
-}
-
-.contatoTableOddRow {
-	text-align: center;
-	background: none repeat scroll 0 0 #FFFFFFF;
-}
-
-.contatoTableEvenRow {
-	text-align: center;
-	background: none repeat scroll 0 0 #D3D3D3;
-}
-</style>
-
+	<h:outputStylesheet library="css" name="table-style.css"  />
 </h:head>
 <h:body>
 	
@@ -39,10 +15,13 @@
 		<h:messages id="msgAlerta" style="color:red"></h:messages>
 		<h:outputText value="#{ContatoMB.mensagemAlerta}"/>
 		<h:outputText value="Seja bem vindo a sua lista de contatos #{loginBean.username}"/>
-		<h:commandButton action="#{loginBean.deslogarUsuario}" value="Logout"/><br/>
-		<h:dataTable value="#{listaContato.contatos}" var="contato"
-			styleClass="contatoTable" headerClass="contatoTableHeader"
-			rowClasses="contatoTableOddRow,contatoTableEvenRow">
+		<h:commandButton action="#{loginBean.deslogarUsuario}" value="Logout"/>
+		<br/>
+		<h:outputText value="2.9"/>
+		<h:dataTable value="#{listaContato.model}" var="contato"
+			styleClass="order-table"
+			headerClass="order-table-header"
+			rowClasses="order-table-odd-row,order-table-even-row">
 			
 			<h:column>
 				<f:facet name="header">Nome</f:facet>
@@ -64,10 +43,10 @@
 		    	<f:facet name="header">
 		    		<h:outputText value="Atualizar" />
 		    	</f:facet>  
-				<h:commandLink value="Atualizar" action="#{listaContato.atualizarContato(contato)}"
+				<h:commandLink  value="Atualizar" action="#{listaContato.atualizarContato(contato)}"
 				 	rendered="#{not contato.editable}" />
-				<h:commandLink value="Salvar Alterações" immediate="true" 
-					action="#{listaContato.salvarAlteracoes}" rendered="#{contato.editable}" />
+				<h:commandLink value="Salvar Alterações" immediate="true"
+					action="#{listaContato.salvarAlteracoes(contato)}" rendered="#{contato.editable}" />
 		    </h:column>  
 
 			<h:column>  
@@ -79,7 +58,7 @@
 		    </h:column>  
 
 		</h:dataTable>
-
+		<h:commandButton value="Save Changes" action="#{listaContato.salvarAlteracoes}" />
 	</h:form>
 
 </h:body>
