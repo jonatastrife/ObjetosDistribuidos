@@ -17,25 +17,23 @@
 		<h:outputText value="Seja bem vindo a sua lista de contatos #{loginBean.username}"/>
 		<h:commandButton action="#{loginBean.deslogarUsuario}" value="Logout"/>
 		<br/>
-		<h:outputText value="2.9"/>
-		<h:dataTable value="#{listaContato.model}" var="contato"
+		<h:dataTable value="#{listaContato.contatos}" var="contato"
 			styleClass="order-table"
 			headerClass="order-table-header"
 			rowClasses="order-table-odd-row,order-table-even-row">
 			
 			<h:column>
 				<f:facet name="header">Nome</f:facet>
-				<h:inputText value="#{contato.nome}" rendered="#{contato.editable}" />
-				<h:outputText value="#{contato.nome}" rendered="#{not contato.editable}" />
+				<h:outputText value="#{contato.nome}" />
 		    </h:column>
 			<h:column>
 				<f:facet name="header">Apelido</f:facet>
-				<h:inputText value="#{contato.apelido}" rendered="#{contato.editable}" />
+				<h:inputText value="#{contato.apelido}" rendered="#{contato.editable}" autoUpdate="true"/>
 				<h:outputText value="#{contato.apelido}" rendered="#{not contato.editable}" />
 		    </h:column>
 		    <h:column>
 				<f:facet name="header">Telefone</f:facet>
-				<h:inputText value="#{contato.telephone}" rendered="#{contato.editable}" />
+				<h:inputText value="#{contato.telephone}" rendered="#{contato.editable}" autoUpdate="true" />
 				<h:outputText value="#{contato.telephone}" rendered="#{not contato.editable}" />
 		    </h:column>	
 		   
@@ -43,10 +41,10 @@
 		    	<f:facet name="header">
 		    		<h:outputText value="Atualizar" />
 		    	</f:facet>  
-				<h:commandLink  value="Atualizar" action="#{listaContato.atualizarContato(contato)}"
+				<h:commandLink  value="Atualizar" actionListener="#{listaContato.atualizarContato(contato)}"
 				 	rendered="#{not contato.editable}" />
-				<h:commandLink value="Salvar Alterações" immediate="true"
-					action="#{listaContato.salvarAlteracoes(contato)}" rendered="#{contato.editable}" />
+				<h:commandLink value="Salvar"
+					actionListener="#{listaContato.salvarAlteracoes(contato)}" rendered="#{contato.editable}" />
 		    </h:column>  
 
 			<h:column>  
@@ -57,8 +55,6 @@
 		    		rendered="#{not contato.editable}"/>  
 		    </h:column> 
 		</h:dataTable>
-
-		<h:commandButton value="Save Changes" action="#{listaContato.salvarAlteracoes}" />
 		<h:commandButton value="Incluir" action="cadContato.xhtml" />
 	</h:form>
 </h:body>
