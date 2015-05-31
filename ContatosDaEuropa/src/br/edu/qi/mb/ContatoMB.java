@@ -1,14 +1,11 @@
 package br.edu.qi.mb;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 
 import br.edu.qi.bean.ContatoBean;
 import br.edu.qi.model.Contato;
@@ -28,7 +25,7 @@ public class ContatoMB implements Serializable{
 	private String email;
 	private String telephone;
 	private String celular;
-	private String dt_nasc;
+	private Date dt_nasc;
 	
 	private String mensagemAlerta;
 
@@ -44,15 +41,12 @@ public class ContatoMB implements Serializable{
 			contato.setEmail(this.getEmail());
 			contato.setTelephone(this.getTelephone());
 			contato.setCelular(this.getCelular());
-			
-			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");  
-			Date data = new Date(format.parse(this.getDt_nasc()).getTime());  
-			contato.setDt_nasc(data);
+			contato.setDt_nasc(this.getDt_nasc());
 			
 			bean.save(contato);
 			MBUtils.redirecionarPara(Urls.URL + Urls.CONTATOS);			
 		} catch (Exception e) {
-			this.buildMessage("mensagemAlerta", e.getMessage());
+			MBUtils.buildMessage("mensagemAlerta", e.getMessage());
 		}
 		return null;
 	}
@@ -74,7 +68,7 @@ public class ContatoMB implements Serializable{
 		if (this.getCelular().trim().isEmpty()) {
 			throw new Exception("Celular não deve ficar em branco!");
 		}
-		if (this.getDt_nasc().trim().isEmpty()) {
+		if (this.getDt_nasc() == null) {
 			throw new Exception("Data de nascimento não deve ficar em branco!");
 		}
 		
@@ -120,11 +114,11 @@ public class ContatoMB implements Serializable{
 		this.celular = celular;
 	}
 
-	public String getDt_nasc() {
+	public Date getDt_nasc() {
 		return dt_nasc;
 	}
 
-	public void setDt_nasc(String dt_nasc) {
+	public void setDt_nasc(Date dt_nasc) {
 		this.dt_nasc = dt_nasc;
 	}
 
@@ -134,12 +128,6 @@ public class ContatoMB implements Serializable{
 
 	public void setMensagemAlerta(String mensagemAlerta) {
 		this.mensagemAlerta = mensagemAlerta;
-	}
-	
-	private void buildMessage(String idElementoNaTela, String mensagem) {
-		FacesMessage facesMessage = new FacesMessage(mensagem);
-		FacesContext.getCurrentInstance().addMessage(idElementoNaTela,
-				facesMessage);
 	}
 	
 }

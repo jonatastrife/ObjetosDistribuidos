@@ -2,7 +2,9 @@
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
- xmlns:h="http://java.sun.com/jsf/html">
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 <h:head>
  <title>Cadastro de Contatos</title>
@@ -31,7 +33,9 @@
       <h:inputText value="#{ContatoMB.email}" ></h:inputText>
       <p></p>
       <h:outputLabel value="Data Nasc.: "/>   
-      <h:inputText value="#{ContatoMB.dt_nasc}" ></h:inputText>
+      <h:inputText value="#{ContatoMB.dt_nasc}" size="10" >
+         <f:convertDateTime pattern="dd/MM/yyyy" />
+      </h:inputText>
       <p></p>
       <div class="row-fluid">
          <h:commandButton styleClass="btn btn-primary" action="#{ContatoMB.save}" value="Gravar"/>
