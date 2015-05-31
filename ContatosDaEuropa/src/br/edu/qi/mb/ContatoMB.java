@@ -49,10 +49,8 @@ public class ContatoMB implements Serializable{
 			Date data = new Date(format.parse(this.getDt_nasc()).getTime());  
 			contato.setDt_nasc(data);
 			
-			this.buildMessage("mensagemAlerta", "Cadastrado com sucesso!");
-			
 			bean.save(contato);
-			
+			MBUtils.redirecionarPara(Urls.URL + Urls.CONTATOS);			
 		} catch (Exception e) {
 			this.buildMessage("mensagemAlerta", e.getMessage());
 		}
