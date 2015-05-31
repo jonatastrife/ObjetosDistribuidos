@@ -6,6 +6,7 @@
 
 <h:head>
  <title>Login</title>
+ <h:outputStylesheet library="css" name="bootstrap.min.css"  />
 </h:head>
 
  <h:body> 
@@ -18,8 +19,8 @@
    <h:outputLabel value="Senha: "/>   
    <h:inputText value="#{loginBean.password}" ></h:inputText>
    <p></p>
-   <h:commandButton action="#{loginBean.executeLogin}" value="Login"/><br/>
-   
+   <h:commandButton styleClass="btn btn-primary" action="#{loginBean.executeLogin}" value="Login"/>
+   <br/>
    <h:messages id="msgAlerta" style="color:red"></h:messages>
    <h:outputText value="#{loginBean.mensagemAlerta}"/>
   </h:form> 
