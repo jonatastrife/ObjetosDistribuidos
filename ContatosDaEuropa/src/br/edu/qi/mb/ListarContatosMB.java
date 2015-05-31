@@ -21,18 +21,22 @@ public class ListarContatosMB implements Serializable {
 
 	private ArrayList<Contato> contatos;
 
-	public ArrayList<Contato> getContatos() {
-		if (contatos == null) {
-			try {
-				contatos = bean.getContatos();
-			} catch (Exception e) {
-				contatos = new ArrayList<Contato>();
-			}
+	private String mensagemAlerta;
+	
+	public void onPageLoad() {
+		try {
+			contatos = bean.getContatos();
+		} catch (Exception e) {
+			MBUtils.buildMessage("mensagemAlerta", e.getMessage());
 		}
+	}
+	
+	public ArrayList<Contato> getContatos() {
 		return contatos;
 	}
 
 	public String deleteContato(Contato contato) {
+		this.setMensagemAlerta("");
 		try {
 			bean.delete(contato);
 			contatos.remove(contato);
@@ -49,6 +53,7 @@ public class ListarContatosMB implements Serializable {
 	}
 
 	public String salvarAlteracoes(Contato contato) {
+		this.setMensagemAlerta("");
 		try {
 			bean.update(contato);
 		} catch (Exception e) {
@@ -58,4 +63,11 @@ public class ListarContatosMB implements Serializable {
 		return null;
 	}
 
+	public String getMensagemAlerta() {
+		return mensagemAlerta;
+	}
+	
+	public void setMensagemAlerta(String mensagemAlerta) {
+		this.mensagemAlerta = mensagemAlerta;
+	}
 }
