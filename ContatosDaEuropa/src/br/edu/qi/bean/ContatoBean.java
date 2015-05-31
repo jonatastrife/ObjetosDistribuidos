@@ -18,7 +18,7 @@ public class ContatoBean{
 	}
 	
 	public void update(Contato contato) throws Exception {
-		contatoDao.update(contato);
+		contatoDao.update(contato); 
 	}
 	
 	public ArrayList<Contato> getContatos() throws Exception {		

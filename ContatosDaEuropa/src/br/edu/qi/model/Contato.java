@@ -21,7 +21,7 @@ public class Contato {
 		this.email = email;
 		this.telephone = telephone;
 		this.celular = celular;
-		this.dt_nasc = dt_nasc;
+		this.dt_nasc = dt_nasc; 
 	}
 
 	public Contato() {

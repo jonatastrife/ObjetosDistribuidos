@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
 
 import br.edu.qi.bean.ContatoBean;
 import br.edu.qi.model.Contato;
@@ -20,6 +23,19 @@ public class ListarContatosMB implements Serializable{
 	ContatoBean bean;
 	
 	private ArrayList<Contato> contatos;
+//	private static final ArrayList<Contato> contatos= new ArrayList<Contato>(Arrays.asList(
+//			new Contato("Dionatan", "Dio", "shjds", "sdfs", "sjka", new Date())));;
+	
+
+	private Contato contatoSelecionado;
+	
+	public Contato getContatoSelecionado() {
+		return contatoSelecionado;
+	}
+
+	public void setContatoSelecionado(Contato contatoSelecionado) {
+		this.contatoSelecionado = contatoSelecionado;
+	}
 
 	public ArrayList<Contato> getContatos() {
 		if (contatos == null) {
@@ -30,10 +46,6 @@ public class ListarContatosMB implements Serializable{
 			}
 		}
 		return contatos;
-	}
-
-	public void setContatos(ArrayList<Contato> contatos) {
-		this.contatos = contatos;
 	}
 
 	public String deleteContato(Contato contato) {
@@ -52,15 +64,33 @@ public class ListarContatosMB implements Serializable{
 		return null;
 	}
 	
-	public String salvarAlteracoes() {
-		for (Contato contato : contatos){
-			if (contato.isEditable()) {
+	private transient DataModel<Contato> model;
+	
+	public DataModel<Contato> getModel() {
+	    if (model == null) {
+	    	try {
+				model = new ListDataModel<Contato>(bean.getContatos());
+			} catch (Exception e) {
+				MBUtils.buildMessage("mensagemAlerta", e.getMessage());
+			}
+	    }
+	    return model;
+	}
+	
+	public String salvarAlteracoes(Contato contato) {
+		getContatoSelecionado();
+		FacesContext context = FacesContext.getCurrentInstance();
+	    Contato outro = context.getApplication().evaluateExpressionGet(context, "#{contato}", Contato.class);
+		Contato novo = model.getRowData();
+		
+		for (Contato c : contatos){
+			if (c.isEditable()) {
 				try {
-					bean.update(contato);
+					bean.update(c);
 				} catch (Exception e) {
 					MBUtils.buildMessage("mensagemAlerta", e.getMessage());
 				}
-				contato.setEditable(false);
+				c.setEditable(false);
 			}
 		}
 		contatos = null;
