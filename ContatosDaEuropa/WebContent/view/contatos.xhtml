@@ -41,10 +41,10 @@
 		    	<f:facet name="header">
 		    		<h:outputText value="Atualizar" />
 		    	</f:facet>  
-				<h:commandLink  value="Atualizar" actionListener="#{listaContato.atualizarContato(contato)}"
+				<h:commandLink  value="Atualizar" action="#{listaContato.atualizarContato(contato)}"
 				 	rendered="#{not contato.editable}" />
 				<h:commandLink value="Salvar"
-					actionListener="#{listaContato.salvarAlteracoes(contato)}" rendered="#{contato.editable}" />
+					action="#{listaContato.salvarAlteracoes(contato)}" rendered="#{contato.editable}" />
 		    </h:column>  
 
 			<h:column>  
