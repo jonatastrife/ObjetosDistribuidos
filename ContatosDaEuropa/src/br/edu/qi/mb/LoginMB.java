@@ -17,8 +17,9 @@ public class LoginMB implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private final String URL_CONTATOS = "http://localhost:8080/ContatosDaEuropa/view/contatos.xhtml";
-	private final String URL_LOGIN = "http://localhost:8080/ContatosDaEuropa/view/login.xhtml";
+	private final String URL = "http://localhost:8080/ContatosDaEuropa/view/";
+	private final String CONTATOS = "contatos.xhtml";
+	private final String LOGIN = "login.xhtml";
 
 	@EJB
 	LoginBean bean;
@@ -27,6 +28,16 @@ public class LoginMB implements Serializable {
 	private String password;
 
 	private String mensagemAlerta;
+	private String usuarioValido;
+
+	public String getUsuarioValido() throws Exception {
+		this.validaLogin();
+		return null;
+	}
+
+	public void setUsuarioValido(String usuarioValido) {
+		this.usuarioValido = usuarioValido;
+	}
 
 	public void executeLogin() {
 		this.setMensagemAlerta("");
@@ -37,7 +48,7 @@ public class LoginMB implements Serializable {
 			Login login = new Login(this.getUsername(), this.getPassword());
 
 			if (bean.verificaLogin(login)) {
-				MBUtils.redirecionarPara(URL_CONTATOS);
+				MBUtils.redirecionarPara(URL + CONTATOS);
 			} else {
 				MBUtils.buildMessage("mensagemAlerta",
 						"Usuário não encontrado!");
@@ -46,10 +57,16 @@ public class LoginMB implements Serializable {
 			MBUtils.buildMessage("mensagemAlerta", e.getMessage());
 		}
 	}
+	
+	public void validaLogin() throws Exception{
+		if (bean.getUsuarioLogado() == null) {
+			MBUtils.redirecionarPara(URL + LOGIN);
+		}
+	}
 
 	public void deslogarUsuario() throws IOException {
 		MBUtils.encerrarSessao();
-		MBUtils.redirecionarPara(URL_LOGIN);
+		MBUtils.redirecionarPara(URL + LOGIN);
 	}
 
 	private void validation() throws Exception {
@@ -72,7 +89,7 @@ public class LoginMB implements Serializable {
 		this.mensagemAlerta = mensagemAlerta;
 	}
 
-	public String getUsername() {
+	public String getUsername() throws Exception {		
 		return username;
 	}
 

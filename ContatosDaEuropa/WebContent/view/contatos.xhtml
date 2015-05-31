@@ -10,10 +10,10 @@
 	<h:outputStylesheet library="css" name="table-style.css"  />
 </h:head>
 <h:body>
-	
+	<h:outputText value="#{loginBean.usuarioValido}"/>
 	<h:form>
 		<h:messages id="msgAlerta" style="color:red"></h:messages>
-		<h:outputText value="#{ContatoMB.mensagemAlerta}"/>
+		<h:outputText value="#{ContatoMB.mensagemAlerta}"/>				
 		<h:outputText value="Seja bem vindo a sua lista de contatos #{loginBean.username}"/>
 		<h:commandButton action="#{loginBean.deslogarUsuario}" value="Logout"/>
 		<br/>
@@ -55,11 +55,11 @@
 		    	</f:facet>  
 		    	<h:commandLink value="Excluir" action="#{listaContato.deleteContato(contato)}" 
 		    		rendered="#{not contato.editable}"/>  
-		    </h:column>  
-
+		    </h:column> 
 		</h:dataTable>
-		<h:commandButton value="Save Changes" action="#{listaContato.salvarAlteracoes}" />
-	</h:form>
 
+		<h:commandButton value="Save Changes" action="#{listaContato.salvarAlteracoes}" />
+		<h:commandButton value="Incluir" action="cadContato.xhtml" />
+	</h:form>
 </h:body>
 </html>
