@@ -28,12 +28,12 @@
 		    </h:column>
 			<h:column>
 				<f:facet name="header">Apelido</f:facet>
-				<h:inputText value="#{contato.apelido}" rendered="#{contato.editable}" autoUpdate="true"/>
+				<h:inputText value="#{contato.apelido}" rendered="#{contato.editable}"/>
 				<h:outputText value="#{contato.apelido}" rendered="#{not contato.editable}" />
 		    </h:column>
 		    <h:column>
 				<f:facet name="header">Telefone</f:facet>
-				<h:inputText value="#{contato.telephone}" rendered="#{contato.editable}" autoUpdate="true" />
+				<h:inputText value="#{contato.telephone}" rendered="#{contato.editable}" />
 				<h:outputText value="#{contato.telephone}" rendered="#{not contato.editable}" />
 		    </h:column>	
 		   
