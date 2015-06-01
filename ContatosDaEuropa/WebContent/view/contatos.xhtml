@@ -23,10 +23,10 @@
 		<h:commandButton styleClass="btn btn-danger" action="#{loginBean.deslogarUsuario}" value="Logout"/>
 		<br/>
 		<br/>
-		<br/>
 		<h:messages id="msgAlerta" style="color:red"></h:messages>
 		<br/>
-		<h:outputText value="#{ContatoMB.mensagemAlerta}"/>				
+		<h:outputText value="#{ContatoMB.mensagemAlerta}"/>
+		<h2>Lista de Contatos</h2>
 		<h:dataTable value="#{listaContato.contatos}" var="contato"
 			styleClass="order-table"
 			headerClass="order-table-header"

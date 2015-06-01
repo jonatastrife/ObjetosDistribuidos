@@ -23,11 +23,16 @@ public class ListarContatosMB implements Serializable {
 
 	private String mensagemAlerta;
 	
+	private boolean editMode = false;
+	
 	public void onPageLoad() {
-		try {
-			contatos = bean.getContatos();
-		} catch (Exception e) {
-			MBUtils.buildMessage("mensagemAlerta", e.getMessage());
+		if (!editMode) {
+			try {
+				contatos = bean.getContatos();
+				editMode = false;
+			} catch (Exception e) {
+				MBUtils.buildMessage("mensagemAlerta", e.getMessage());
+			}
 		}
 	}
 	
@@ -49,6 +54,7 @@ public class ListarContatosMB implements Serializable {
 
 	public String atualizarContato(Contato contato) {
 		contato.setEditable(true);
+		editMode = true;
 		return null;
 	}
 
@@ -60,6 +66,7 @@ public class ListarContatosMB implements Serializable {
 			MBUtils.buildMessage("mensagemAlerta", e.getMessage());
 		}
 		contatos = null;
+		editMode = false;
 		return null;
 	}
 
